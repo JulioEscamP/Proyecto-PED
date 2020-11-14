@@ -189,7 +189,7 @@ void submenuRegistro(list <Afectado> x, Afectado y)
         y.alb = AC02;
         cout << "Se le asigno Albergue --";
         break;
-    //Probando introducir changes para github
+    //Probando introducir changes para githubvgggg
     default:
     cout << "Opcion no valida, intente de nuevo";
         break;
