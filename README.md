@@ -1,17 +1,16 @@
 # Proyecto-PED
+--------------------------------------
+### Josué Gabriel Argueta López 
+#### Carné:00115220.
 
-<<<<<<< HEAD
-## Josué Gabriel Argueta López 
-### Carné:00115220.
+### Guillermo Josué Galdámez Rivera 
+#### Carné: 0084320.
 
-## Guillermo Josué Galdámez Rivera 
-### Carné: 0084320.
+### Julio José Escamilla Pérez 
+#### Carné: 00117220.
 
-## Julio José Escamilla Pérez 
-### Carné: 00117220.
-
-## Jacob Antonio Shul Martin
-### Carné: 00258720.
+### Jacob Antonio Shul Martin
+#### Carné: 00258720.
 
 # Descripción:
 
