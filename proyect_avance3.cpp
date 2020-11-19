@@ -23,7 +23,7 @@ struct Afectado
     string nombre;
     string apellido;
     int edad;
-    Necesidad nc;
+    list<Necesidad>necesi;
     Albergue alb;
 }; 
 
@@ -35,9 +35,13 @@ struct Desaparecido
 }; 
 
 void damnificados(list <Afectado> Damnificados){
-    bool m=true, continuar=true, continuar2=true;
+    bool m = true, continuar = true;
     int option, n, o;
+    char c;
     struct Afectado afectado;
+    list <Necesidad> nec = afectado.necesi;
+    
+
     while (m)
     {
         cout << "\n***Menu de registro de Damnificados***\n" << endl;
@@ -47,7 +51,7 @@ void damnificados(list <Afectado> Damnificados){
         cout << "4. Volver" << endl;
         cout << "*Introduzca el numero de la accion a realizar*" << endl;
 
-        cin >> option;cout<<endl; cin.ignore();
+        cin >> option; cout<<endl; cin.ignore();
         switch (option)
         {
         case 1:
@@ -58,39 +62,59 @@ void damnificados(list <Afectado> Damnificados){
            cout << "Ingrese edad \n";
            cin >> afectado.edad;
 
-           cout << "Ingrese necesidad que presenta: \n 1. Ropa\n 2.Cama\n 3.Medicina\n 4.LimpiezaPersonal  \n";
-           cin>>n; cout<<endl;
+        while (continuar)
+        {
+           cout << "Ingrese necesidad que presenta: \n 1. Ropa\n 2.Cama\n 3.Medicina\n 4. Articulos de Limpieza Personal\n";
+           cin >> n;
            switch(n){
-               case 1 : afectado.nc = Ropa; continuar = false; 
+               case 1 : nec.insert(nec.end(),Ropa);
+               cout << "Desea continuar? (y/n)";
+               cin >> c;
+               if (c == 'n') continuar = false;
                break;
-               case 2 : afectado.nc = Cama; continuar = false; 
+
+               case 2 : nec.insert(nec.end(),Cama); 
+               cout << "Desea continuar? (y/n)";
+               cin >> c;
+               if (c == 'n') continuar = false;
                break;
-               case 3 : afectado.nc = Medicina; continuar = false; 
+
+               case 3 : nec.insert(nec.end(),Medicina);
+               cout << "Desea continuar? (y/n)";
+               cin >> c;
+               if (c == 'n') continuar = false;
                break;
-               case 4 : afectado.nc = LimpiezaPersonal; continuar = false; 
+
+               case 4 : nec.insert(nec.end(),LimpiezaPersonal);
+               cout << "Desea continuar? (y/n)";
+               cin >> c;
+               if (c == 'n') continuar = false;
                break;
+
                default :
                cout<<"opcion no valida";
                break;
-           }
-           cout << "Ingrese necesidad que presenta: \n NJ01,NJ02,NJ03,SS01,SS02,SS03,AC01,AC02  \n";
+           } 
+        }
+
+           cout << "Ingrese donde sera albergado:\n1. Centro Escolar Aldea de las Mercedes (Nejapa) \n2. Iglesia Evang(e)lica Siloe (Nejapa) \n3. Centro Escolar Jos(e) Matias Delgado (San salvador) \n4. Cancha de F(u)tbol Chapupo Rodr(i)guez (San salvador) \n5. Parque Dr. Carlos Antonio Herrera Rebollo (San salvador) \n6. Iglesia Catolica Don Rua (San salvador) \n7. Centro educativo Walter Thilo Deininger (Antiguo Cuscatlan) \n8. Complejo Deportivo La sultana (Antiguo Cuscatlan)\n";
            cin>>o; cout<<endl;
            switch(o){
-               case 1 : afectado.alb = NJ01; continuar2 = false; 
+               case 1 : afectado.alb = NJ01;  
                break;
-               case 2 : afectado.alb = NJ02; continuar2 = false; 
+               case 2 : afectado.alb = NJ02; 
                break;
-               case 3 : afectado.alb = NJ03; continuar2 = false; 
+               case 3 : afectado.alb = NJ03; 
                break;
-               case 4 : afectado.alb = SS01; continuar2 = false; 
+               case 4 : afectado.alb = SS01;  
                break;
-               case 5 : afectado.alb = SS02; continuar2 = false; 
+               case 5 : afectado.alb = SS02; 
                break;
-               case 6 : afectado.alb = SS03; continuar2 = false; 
+               case 6 : afectado.alb = SS03; 
                break;
-               case 7 : afectado.alb = AC01; continuar2 = false; 
+               case 7 : afectado.alb = AC01;
                break;
-               case 8 : afectado.alb = AC01; continuar2 = false; 
+               case 8 : afectado.alb = AC01; 
                break;
                default :
                cout<<"opcion no valida";
@@ -100,7 +124,7 @@ void damnificados(list <Afectado> Damnificados){
 
             break;
             case 2:
-            cout << "Ingrese nombre de la persona que ya recibió atención\n";
+            cout << "Ingrese el primer y segundo nombre de la persona que ya recibió atención\n";
             getline(cin, afectado.nombre); cout << endl;
 
             cout << "Ingrese primer y segundo apellido \n";
@@ -122,18 +146,22 @@ void damnificados(list <Afectado> Damnificados){
         case 3:
         cout<<endl<<"Mostrandlo lista: "<<endl;
             for (Afectado i : Damnificados) {
-                cout <<"Nombres: "<< i.nombre << " ";
-                cout <<"Apellidos: "<< i.apellido << " ";
-                cout <<"Edad: "<< i.edad << endl;
-                cout <<"Necesidad: "<< i.nc << " ";
-                cout <<"Albergue: "<< i.alb << endl;
+                cout <<"\n Nombres: "<< i.nombre << " ";
+                cout <<"\n Apellidos: "<< i.apellido << " ";
+                cout <<"\n Edad: "<< i.edad << endl;
+                for (Necesidad j: nec){
+                cout <<"\n Necesidad: "<< j << " ";
+
+                }
+                cout <<"\n Albergue: "<< i.alb << endl;
            }
 
             break;
 
 
         case 4:
-            m=false;
+            cout << "Menu anterior ->";
+            m = false;
             break;
 
         default:
@@ -144,7 +172,7 @@ void damnificados(list <Afectado> Damnificados){
     }
 }
 void heridos( list <Herido> Heridos){
-    bool m=true, continuar=true;
+    bool m = true, continuar = true;
     int option, n;
     struct Herido herido;
     while (m)
