@@ -7,7 +7,7 @@ using namespace std;
 
 enum Necesidad{Ropa,Cama,Medicina,LimpiezaPersonal};
 enum Albergue{NJ01,NJ02,NJ03,SS01,SS02,SS03,AC01,AC02};
-enum Injurie{Hueso_roto,Laceraciones,Enfermedad_respiratoria, Herida_craneal,Enfermedad_grave};
+enum Injurie{Estable,Grave,Critico};
 
 struct Herido
 {
@@ -34,7 +34,7 @@ struct Desaparecido
     int edad;
 }; 
 
-void damnificados(list <Afectado> Damnificados){
+void damnificados(list <Afectado> &Damnificados){
     bool m = true, continuar = true, continuar2=true;
     int option, n, o;
     char c = 'y';
@@ -61,12 +61,17 @@ void damnificados(list <Afectado> Damnificados){
             getline(cin, afectado.nombre); cout << endl;
             cout << "Ingrese primer y segundo apellido \n";
             getline(cin, afectado.apellido); cout << endl;
+            do
+            {
             cout << "Ingrese edad \n";
-            cin>>afectado.edad; cin.ignore();
+            cin>>afectado.edad; 
+            } while (afectado.edad <= 0);
+            
+            cin.ignore();
         
+            while (continuar){
             printf("Ingrese necesidad que presenta: \n 1. Ropa\n 2.Cama\n 3.Medicina\n 4. Art%cculos de limpieza personal\n",161);
-            while (continuar)
-            {cin >> n;
+            cin >> n;
             switch(n){
                 case 1 : nec.insert(nec.end(),Ropa);
                     cout << "Existe otra necesidad? (y/n)";
@@ -158,7 +163,7 @@ void damnificados(list <Afectado> Damnificados){
                   case Ropa: cout << "Ropa" << " "; break;
                   case Cama: cout << "Cama" << " "; break;
                   case Medicina: cout << "Medicina" << " "; break;
-                  case LimpiezaPersonal: cout << "LimpiezaPersonal" << " "; break;
+                  case LimpiezaPersonal: printf("Articulos de limpieza personal");cout << endl; break;
                  }
                 }
                 cout <<" Albergue: ";
@@ -191,7 +196,7 @@ void damnificados(list <Afectado> Damnificados){
 
     }
 }
-void heridos( list <Herido> Heridos){
+void heridos( list <Herido> &Heridos){
     bool m = true, continuar = true;
     int option, n;
     struct Herido herido;
@@ -213,25 +218,26 @@ void heridos( list <Herido> Heridos){
             getline(cin, herido.nombre); cout << endl;
             cout << "Ingrese primer y segundo apellido \n";
             getline(cin, herido.apellido); cout << endl;
+            do
+            {
             cout << "Ingrese edad \n";
             cin >> herido.edad;
+            } while (herido.edad <= 0);
+            
             cin.ignore();
             printf("Ingrese al hospital al que se le llevar%c\n",160);
             getline(cin, herido.hospital); cout << endl;
-            cout << "Ingrese Problema que presenta\n 1. Hueso_roto\n 2.Laceraciones\n 3.Enfermedad_respiratoria\n 4.Herida_craneal\n 5.Enfermedad_grave \n";
+            printf("Ingrese el estado del Herido \n 1. Estable\n 2.Grave\n 3.Cr%ctico",161); cout << endl;
             cin>>n;cout<<endl;
             switch(n){
-                case 1 : herido.in = Hueso_roto; continuar = false; 
+                case 1 : herido.in = Estable; continuar = false; 
                     break;
-                case 2 : herido.in = Laceraciones; continuar = false; 
+                case 2 : herido.in = Grave; continuar = false; 
                     break;
-                case 3 : herido.in = Enfermedad_respiratoria; continuar = false; 
+                case 3 : herido.in = Critico; continuar = false; 
                     break;
-                case 4 : herido.in = Herida_craneal; continuar = false; 
-                    break;
-                case 5 : herido.in = Enfermedad_grave; continuar = false; 
-                    break;
-                case 6 : 
+
+                default : 
                     printf("\nOpci%cn no ",162);
                     printf("v%clida\n",160);
                     break;
@@ -264,15 +270,13 @@ void heridos( list <Herido> Heridos){
         cout<<endl<<"Mostrando lista: "<<endl;
             for (Herido i : Heridos) {
                 cout <<"Nombres: "<< i.nombre << " ";
-                cout <<"Apellidos: "<< i.apellido << " ";
-                cout <<"Edad: "<< i.edad << endl;
-                cout <<"Problema que presenta: ";
+                cout <<"\n Apellidos: "<< i.apellido << " ";
+                cout <<"\n Edad: "<< i.edad << endl;
+                cout <<"\n Estado: ";
                 switch(i.in){
-                    case Hueso_roto: cout << "Hueso_roto" << endl; break;
-                    case Laceraciones: cout << "Ropa" << endl; break;
-                    case Enfermedad_respiratoria: cout << "Ropa" << endl; break;
-                    case Herida_craneal: cout << "Ropa" << endl; break;
-                    case Enfermedad_grave: cout << "Ropa" << endl; break;
+                    case Estable: cout << "Estable" << endl; break;
+                    case Grave: cout << "Grave" << endl; break;
+                    case Critico: printf("Cr%ctico",161); break;
                 }
                 cout<<endl;
            }
@@ -292,7 +296,7 @@ void heridos( list <Herido> Heridos){
 
     }
 }
-void desaparecidos(list <Desaparecido> Desaparecidos){
+void desaparecidos(list <Desaparecido> &Desaparecidos){
     bool m=true;
     int option;
     struct Desaparecido desaparecido;
