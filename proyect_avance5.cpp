@@ -35,7 +35,7 @@ struct Desaparecido
 }; 
 
 void damnificados(list <Afectado> Damnificados){
-    bool m = true, continuar = true;
+    bool m = true, continuar = true, continuar2=true;
     int option, n, o;
     char c;
     struct Afectado afectado;
@@ -61,11 +61,10 @@ void damnificados(list <Afectado> Damnificados){
            getline(cin, afectado.apellido); cout << endl;
            cout << "Ingrese edad \n";
            cin >> afectado.edad;
-
-        while (continuar)
-        {
            cout << "Ingrese necesidad que presenta: \n 1. Ropa\n 2.Cama\n 3.Medicina\n 4. Articulos de Limpieza Personal\n";
            cin >> n;
+           while (continuar)
+            {
            switch(n){
                case 1 : nec.insert(nec.end(),Ropa);
                cout << "Desea continuar? (y/n)";
@@ -150,23 +149,28 @@ void damnificados(list <Afectado> Damnificados){
                 cout <<"\n Apellidos: "<< i.apellido << " ";
                 cout <<"\n Edad: "<< i.edad << endl;
                 for (Necesidad j: nec){
-                cout <<"\n Necesidad: "<< j << " ";
-
+                cout <<"\n Necesidad: ";
+                 switch(j){
+                  case Ropa: cout << "Ropa" << endl; break;
+                  case Cama: cout << "Cama" << endl; break;
+                  case Medicina: cout << "Medicina" << endl; break;
+                  case LimpiezaPersonal: cout << "LimpiezaPersonal" << endl; break;
+                 }
                 }
                 cout <<" Albergue: ";
                 switch(i.alb){
-                  case NJ01: cout << "NJ01" << endl; break;
-                  case NJ02: cout << "NJ02" << endl; break;
-                  case NJ03: cout << "NJ03" << endl; break;
-                  case SS01: cout << "SS01" << endl; break;
-                  case SS02: cout << "SS02" << endl; break;
-                  case SS03: cout << "SS03" << endl; break;
-                  case AC01: cout << "AC01" << endl; break;
-                  case AC02: cout << "AC02" << endl; break;
+                  case NJ01: cout << "Centro Escolar Aldea de las Mercedes (Nejapa)" << endl; break;
+                  case NJ02: cout << "Iglesia Evang(e)lica Siloe (Nejapa)" << endl; break;
+                  case NJ03: cout << "Centro Escolar Jos(e) Matias Delgado (San salvador)" << endl; break;
+                  case SS01: cout << "Cancha de F(u)tbol Chapupo Rodr(i)guez (San salvador)" << endl; break;
+                  case SS02: cout << "Parque Dr. Carlos Antonio Herrera Rebollo (San salvador)" << endl; break;
+                  case SS03: cout << "Iglesia Catolica Don Rua (San salvador)" << endl; break;
+                  case AC01: cout << "Centro educativo Walter Thilo Deininger (Antiguo Cuscatlan)" << endl; break;
+                  case AC02: cout << "Complejo Deportivo La sultana (Antiguo Cuscatlan)" << endl; break;
                 }
            }
            cout<<endl;
-
+        
             break;
 
 
@@ -263,9 +267,6 @@ void heridos( list <Herido> Heridos){
                   case Enfermedad_grave: cout << "Ropa" << endl; break;
                 }
                 cout<<endl;
-           }
-           if(empty(Heridos) ){
-               cout<<"No hay personas heridas por el momento"<<endl;
            }
 
             break;
