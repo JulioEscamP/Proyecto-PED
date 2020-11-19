@@ -1,5 +1,6 @@
 # Proyecto-PED
 
+<<<<<<< HEAD
 ## Josué Gabriel Argueta López 
 ### Carné:00115220.
 
@@ -26,4 +27,10 @@ Donde se toma la informacion de sus nombres, apellidos, edad, gravedad de herida
 #### Lista de Desaparecidos:
 Donde se toma la informacion de sus nombres, apellidos y edad. 
 
+=======
+#Julio José Escamilla Pérez 00117220
+Josué Gabriel Argueta López 00115220
+Guillermo Josué Galdámez Rivera 00084320
+Jacob Antonio Shul Martín 00258720
+>>>>>>> d6ad7272c07c6ebfa11a1e7f1f7c3326cca30231
 
